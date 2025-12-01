@@ -39,6 +39,11 @@
 
 *{ box-sizing:border-box; }
 
+html {
+  scroll-behavior: smooth;
+}
+
+
 body{
   margin:0;
   padding:28px 18px;
@@ -296,91 +301,58 @@ nav.menu a:hover{
 /* ============================================
    RESPONSIVIDADE GERAL — ATÉ 980px
    ============================================ */
-@media (max-width: 980px) {
-
-  /* área principal vira 1 coluna */
-  .layout {
-    grid-template-columns: 1fr;
-  }
-
-  /* sidebar desce abaixo da receita */
-  aside.lateral {
-    order: 2;
-  }
-
-  .receita {
-    order: 1;
-  }
-
-  /* cursos — 2 colunas */
-  .cursos {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  /* thumbnails dos passos somem */
-  .thumb {
-    display: none;
-  }
-}
-
-
-/* ============================================
-   RESPONSIVO TABLET / CELULAR — ATÉ 768px
-   ============================================ */
+/* ===============================
+   HEADER RESPONSIVO — até 768px
+   =============================== */
 @media (max-width: 768px) {
 
-  /* header vira coluna */
+  /* Caixa principal do header */
+  header.cabecalho {
+    padding: 16px;
+    gap: 14px;
+  }
+
+  /* Área superior vira coluna, mas BEM alinhada */
   .topo-cabecalho {
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
   }
 
-  .menu {
-    justify-content: center;
-    flex-wrap: wrap;
+  /* A logo fica maior e centralizada */
+  .logo {
+    width: 90px;
+    height: 90px;
   }
 
+  /* MENU vira barra horizontal rolável (fica MUITO mais bonito em mobile) */
+  nav.menu {
+    width: 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+    gap: 14px;
+    padding-bottom: 4px;
+  }
+
+  nav.menu a {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    padding: 8px 10px;
+  }
+
+  /* Barra de busca: 100% largura e centralizada */
   .busca {
     width: 100%;
+    justify-content: center;
   }
 
-  .tags {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-  }
-
-  /* cursos — 1 coluna */
-  .cursos {
-    grid-template-columns: 1fr;
-  }
-}
-
-
-/* ============================================
-   MOBILE PEQUENO — ATÉ 480px
-   ============================================ */
-@media (max-width: 480px) {
-
-  /* logo reduz um pouco */
-  .logo {
-    width: 64px;
-    height: 64px;
-  }
-
-  body {
-    font-size: 16px;
-  }
-
-  .botao-vermelho,
-  .botao-borda {
+  .busca input {
     width: 100%;
-    text-align: center;
-  }
-
-  .tags {
-    gap: 8px;
   }
 }
+
+
 
 
 </style>
@@ -396,14 +368,18 @@ nav.menu a:hover{
 
     <div class="logo-area">
       <div class="logo">
-        <img src="../Cazim logo.png" style="width:100%;height:100%;object-fit:cover;">
+        <img src="./imagens/Cazim logo.png" style="width:100%;height:100%;object-fit:cover;">
       </div>
      
     </div>
 
     <nav class="menu">
-      <a>Sobre nós</a><a>Receitas</a><a>Cursos</a><a>Contatos</a>
+  <a href="#sobre-nos">Sobre nós</a>
+  <a href="#receita">Receitas</a>
+  <a href="#cursos">Cursos</a>
+  <a href="#contatos">Contatos</a>
     </nav>
+
 
    <div class="busca">
   <svg width="18" height="18" fill="#8C897F" style="min-width:18px;">
@@ -434,13 +410,14 @@ nav.menu a:hover{
 <div class="layout">
 
   <!-- RECEITA (ESQUERDA) -->
-  <article class="receita">
+  <article class="receita" id="receita">
+
 
     <h2>Lasanha à Bolonhesa</h2>
     <div class="meta">Tempo total: 60 minutos</div>
 
     <div class="imagem-principal"
-      style="background-image:url('../CAZIM/lasanha.png');"></div>
+      style="background-image:url('./imagens/lasanha.png');"></div>
 
     <p style="color:var(--muted);margin-top:10px;">
       Lasanha caseira prática, saborosa e com molho bolonhesa tradicional feito na panela.
@@ -467,41 +444,41 @@ nav.menu a:hover{
       <div class="passos">
 
         <div class="passo">
-          <div class="thumb" style="background-image:url('../CAZIM/1.png');"></div>
+          <div class="thumb" style="background-image:url('./imagens/1.png');"></div>
           <p><strong>1.</strong> Refogue a carne moída até dourar bem.</p>
         </div>
         <div class="passo">
-          <div class="thumb" style="background-image:url('../CAZIM/2.png');"></div>
+          <div class="thumb" style="background-image:url('./imagens/2.png');"></div>
           <p><strong>2.</strong> Tempere com sal, pimenta-do-reino e orégano.</p>
         </div>
 
         <div class="passo">
-          <div class="thumb" style="background-image:url('../CAZIM/3.png');"></div>
+          <div class="thumb" style="background-image:url('./imagens/3.png');"></div>
           <p><strong>3.</strong> Adicione o molho de tomate e cozinhe por 10 minutos.</p>
         </div>
 
         <div class="passo">
-          <div class="thumb" style="background-image:url('../CAZIM/4.png');"></div>
+          <div class="thumb" style="background-image:url('./imagens/4.png');"></div>
           <p><strong>4.</strong> Espalhe um pouco do molho no fundo da travessa.</p>
         </div>
 
         <div class="passo">
-          <div class="thumb" style="background-image:url('../CAZIM/5.png');"></div>
+          <div class="thumb" style="background-image:url('./imagens/5.png');"></div>
           <p><strong>5.</strong> Monte com massa, presunto e mussarela.</p>
         </div>
 
         <div class="passo">
-          <div class="thumb" style="background-image:url('../CAZIM/6.png');"></div>
+          <div class="thumb" style="background-image:url('./imagens/6.png');"></div>
           <p><strong>6.</strong> Acrescente mais uma camada de molho.</p>
         </div>
 
         <div class="passo">
-          <div class="thumb" style="background-image:url('../CAZIM/7.png');"></div>
+          <div class="thumb" style="background-image:url('./imagens/7.png');"></div>
           <p><strong>7.</strong> Repita o processo até finalizar os ingredientes.</p>
         </div>
 
         <div class="passo">
-          <div class="thumb" style="background-image:url('../CAZIM/8.png');"></div>
+          <div class="thumb" style="background-image:url('./imagens/8.png');"></div>
           <p><strong>8.</strong> Leve ao forno preaquecido a 200°C por 20–25 minutos.</p>
         </div>
 
@@ -520,27 +497,27 @@ nav.menu a:hover{
       <h4 style="margin-top:0;font-size:var(--fonte-grande)">Outras receitas</h4>
 
       <div class="item-outro">
-        <div class="mini" style="background-image:url('./Bolo\ de\ fubá\ cremoso.png');"></div>
+        <div class="mini" style="background-image:url('./imagens/Bolo\ de\ fubá\ cremoso.png');"></div>
         <div>Bolo de fubá fofinho</div>
       </div>
 
       <div class="item-outro">
-        <div class="mini" style="background-image:url('./Strogonoff\ de\ frango\ simples.png');"></div>
+        <div class="mini" style="background-image:url('./imagens/Strogonoff\ de\ frango\ simples.png');"></div>
         <div>Strogonoff de frango</div>
       </div>
 
       <div class="item-outro">
-        <div class="mini" style="background-image:url('./Macarrão\ de\ forno\ com\ carne\ moída.png');"></div>
+        <div class="mini" style="background-image:url('./imagens/Macarrão\ de\ forno\ com\ carne\ moída.png');"></div>
         <div>Macarrão de forno</div>
       </div>
 
       <div class="item-outro">
-        <div class="mini" style="background-image:url('./Moqueca\ de\ peixe\ fácil.png');"></div>
+        <div class="mini" style="background-image:url('./imagens/Moqueca\ de\ peixe\ fácil.png');"></div>
         <div>Moqueca fácil</div>
       </div>
 
       <div class="item-outro">
-        <div class="mini" style="background-image:url('./Pão\ caseiro\ fofinho.png');"></div>
+        <div class="mini" style="background-image:url('./imagens/Pão\ caseiro\ fofinho.png');"></div>
         <div>Pão caseiro</div>
       </div>
 
@@ -557,7 +534,8 @@ nav.menu a:hover{
      ====================================================== -->
 
 <!-- QUEM SOMOS -->
-<div class="bloco" style="margin-top:32px;">
+<div class="bloco" id="sobre-nos" style="margin-top:32px;">
+
   <h4 style="margin-top:0;font-size:var(--fonte-grande)">Quem somos</h4>
   <p>
     Na Cazim, acreditamos que cozinhar é para todos. Criamos um espaço online que transforma a cozinha
@@ -570,7 +548,8 @@ nav.menu a:hover{
 
 
 <!-- NOVOS CURSOS (agora com BOTÕES com HOVER igual aos outros!) -->
-<div class="bloco" style="margin-top:22px;">
+<div class="bloco" id="cursos" style="margin-top:22px;">
+
   <h4 style="margin-top:0;font-size:var(--fonte-grande)">Novos cursos</h4>
 
   <div class="cursos">
@@ -643,7 +622,8 @@ nav.menu a:hover{
 
 
 <!-- FOOTER -->
-<footer style="
+<footer id="contatos" style="background:var(--footer-fundo);
+
   background:var(--footer-fundo);
   text-align:center;
   padding:18px;
@@ -662,9 +642,9 @@ nav.menu a:hover{
   </div>
 
   <div style="margin-top:10px; display:flex; justify-content:center; gap:12px;">
-    <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" style="width:22px;">
-    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" style="width:22px;">
-    <img src="https://cdn-icons-png.flaticon.com/512/3046/3046126.png" style="width:22px;">
+    <a href="https://instagram.com/Cazim_Receitas" target="_blank">
+  <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" style="width:22px;">
+</a>
   </div>
 
 </footer>
